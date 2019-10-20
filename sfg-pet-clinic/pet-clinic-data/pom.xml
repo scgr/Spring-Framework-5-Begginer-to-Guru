@@ -11,6 +11,10 @@
 	<name>pet-clinic-data</name>
 	<description>SFG Pet Clinic Data</description>
 
+	<properties>
+		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,9 +52,6 @@
 						<goals>
 							<goal>repackage</goal>
 						</goals>
-						<configuration>
-							<skip>true</skip>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
