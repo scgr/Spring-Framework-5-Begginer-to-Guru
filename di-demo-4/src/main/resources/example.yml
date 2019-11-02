@@ -1,0 +1,36 @@
+# This is a comment of YAML
+
+name: John
+
+names: #Comment
+    - John
+    - Paul
+    - Ringo
+
+pound_sign: "#"
+
+book:
+    author: Joe Buck
+    publisher: Fucking publisher
+
+truth: yes
+
+another_truth: True
+
+more_true: true
+
+false: no #No, false, FALSE
+
+string_val: "This is a quote"
+
+colon_string: "I am: John Oldman"
+
+include_new_lines: |
+  sad dsa sda
+  dbhs dsaw newf
+  nvjd reoi nfiowr
+
+ignore_new_lines: >
+  this is
+  just one long
+  string

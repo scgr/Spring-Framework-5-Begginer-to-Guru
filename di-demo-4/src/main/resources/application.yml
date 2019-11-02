@@ -1,0 +1,7 @@
+#Propiedades que se van a leer basandose en ficheros de propiedades en YAML
+
+guru:
+  jms:
+    name: JMS username
+    password: JMS password
+    topicurl: JMS topic url
