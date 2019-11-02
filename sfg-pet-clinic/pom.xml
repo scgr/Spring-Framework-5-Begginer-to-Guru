@@ -42,9 +42,9 @@
 		</plugins>
 	</build>
 
-	<scm>
+	<!-- <scm>
 		<developerConnection>scm:git:git@github.com:scgr/Spring-Framework-5-Begginer-to-Guru.git</developerConnection>
 		<tag>sfg-pet-clinic-0.0.1</tag>
-	</scm>
+	</scm> -->
 	
 </project>
