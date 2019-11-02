@@ -5,3 +5,13 @@ guru:
     name: JMS username
     password: JMS password
     topicurl: JMS topic url
+
+---
+
+#Propiedades basadas en diferentes perfiles
+spring:
+  profiles: de
+
+guru:
+  jms:
+    name: JMS username in German!!!

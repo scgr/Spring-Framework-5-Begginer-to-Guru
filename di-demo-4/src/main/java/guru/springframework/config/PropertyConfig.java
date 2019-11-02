@@ -43,7 +43,9 @@ public class PropertyConfig {
 	@Bean
 	public FakeDataSource fakeDataSource() {
 		FakeDataSource fakeDataSource = new FakeDataSource();
-		fakeDataSource.setName(environment.getProperty("USERNAME"));
+		// fakeDataSource.setName(environment.getProperty("USERNAME")); This load the
+		// property from environment variable
+		fakeDataSource.setName(name);
 		fakeDataSource.setPassword(password);
 		fakeDataSource.setUrl(url);
 
@@ -60,10 +62,11 @@ public class PropertyConfig {
 		return fakeJmsBroker;
 	}
 
-	//Bean usado para leer ficheros de propiedades especificos (excepto el de application.properties de Spring Boot).
-	/*@Bean
-	public static PropertySourcesPlaceholderConfigurer properties() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}*/
+	// Bean usado para leer ficheros de propiedades especificos (excepto el de
+	// application.properties de Spring Boot).
+	/*
+	 * @Bean public static PropertySourcesPlaceholderConfigurer properties() {
+	 * return new PropertySourcesPlaceholderConfigurer(); }
+	 */
 
 }
