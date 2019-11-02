@@ -13,11 +13,10 @@ import guru.springframework.examplebeans.FakeDataSource;
 import guru.springframework.examplebeans.FakeJmsBroker;
 
 @Configuration
-//@PropertySource({ "classpath:datasource.properties", "classpath:jms.properties" }) // Anotacion para indicar cual es el
-// fichero de propiedades del que va
-// a matchear los valores
+//@PropertySource({ "classpath:datasource.properties", "classpath:jms.properties" }) // Anotacion para indicar cuales son
+// los fichero de propiedades del que va a matchear los valores
 
-@PropertySources({ @PropertySource("classpath:datasource.properties"), @PropertySource("classpath:jms.properties") })
+//@PropertySources({ @PropertySource("classpath:datasource.properties"), @PropertySource("classpath:jms.properties") })
 public class PropertyConfig {
 
 	@Autowired
@@ -61,9 +60,10 @@ public class PropertyConfig {
 		return fakeJmsBroker;
 	}
 
-	@Bean
+	//Bean usado para leer ficheros de propiedades especificos (excepto el de application.properties de Spring Boot).
+	/*@Bean
 	public static PropertySourcesPlaceholderConfigurer properties() {
 		return new PropertySourcesPlaceholderConfigurer();
-	}
+	}*/
 
 }
