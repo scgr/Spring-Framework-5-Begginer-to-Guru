@@ -16,7 +16,9 @@ import guru.springframework.sfgpetclinic.services.PetTypeService;
 import guru.springframework.sfgpetclinic.services.SpecialitesService;
 import guru.springframework.sfgpetclinic.services.VetService;
 import guru.springframework.sfgpetclinic.services.VisitService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class DataLoader implements CommandLineRunner {
 
@@ -51,88 +53,52 @@ public class DataLoader implements CommandLineRunner {
 	}
 
 	private void loadData() {
-		PetType dog = new PetType();
-		dog.setName("Dog");
-
+		PetType dog = PetType.builder().name("Dog").build();
 		PetType savedDog = petTypeService.save(dog);
 
-		PetType cat = new PetType();
-		cat.setName("Cat");
-
+		PetType cat = PetType.builder().name("Cat").build();
 		PetType savedCat = petTypeService.save(cat);
 
-		System.out.println("Loaded Pets Types....");
-
-		Speciality speciality1 = new Speciality();
-		speciality1.setDespcription("Radiology");
+		Speciality speciality1 = Speciality.builder().despcription("Radiology").build();
 		Speciality savedSpeciality1 = specialitesService.save(speciality1);
 
-		Speciality speciality2 = new Speciality();
-		speciality2.setDespcription("Surgery");
+		Speciality speciality2 = Speciality.builder().despcription("Surgery").build();
 		Speciality savedSpeciality2 = specialitesService.save(speciality2);
 
-		Speciality speciality3 = new Speciality();
-		speciality3.setDespcription("Dentistry");
+		Speciality speciality3 = Speciality.builder().despcription("Dentistry").build();
 		Speciality savedSpeciality3 = specialitesService.save(speciality3);
 
-		System.out.println("Loaded Specialities....");
+		Owner owner1 = Owner.builder().firstName("Michael").lastName("Weston").address("Fake St. 123")
+				.city("Evergreen Terrace Phase 1").telephone("555-000-6969").build();
 
-		Owner owner1 = new Owner();
-		owner1.setFirstName("Michael");
-		owner1.setLastName("Weston");
-		owner1.setAddress("Fake St. 123");
-		owner1.setCity("Evergreen Terrace Phase 1");
-		owner1.setTelephone("555-000-6969");
+		Pet mikesPet = Pet.builder().name("Rosco").petType(savedDog).birthDate(LocalDate.now()).owner(owner1).build();
 
-		Pet mikesPet = new Pet();
-		mikesPet.setName("Rosco");
-		mikesPet.setPetType(savedDog);
-		mikesPet.setBirthDate(LocalDate.now());
-		mikesPet.setOwner(owner1);
 		owner1.getPets().add(mikesPet);
-
 		ownerService.save(owner1);
 
-		Owner owner2 = new Owner();
-		owner2.setFirstName("Fiona");
-		owner2.setLastName("Glenanne");
-		owner2.setAddress("Fake St. 456");
-		owner2.setCity("Evergreen Terrace Phase 2");
-		owner2.setTelephone("555-999-6969");
+		Owner owner2 = Owner.builder().firstName("Fiona").lastName("Glenanne").address("Fake St. 456")
+				.city("Evergreen Terrace Phase 2").telephone("555-999-6969").build();
 
-		Pet fionasCat = new Pet();
-		fionasCat.setName("Missiu");
-		fionasCat.setPetType(savedCat);
-		fionasCat.setBirthDate(LocalDate.now());
-		fionasCat.setOwner(owner2);
+		Pet fionasCat = Pet.builder().name("Missiu").petType(savedCat).birthDate(LocalDate.now()).owner(owner2).build();
+
 		owner2.getPets().add(fionasCat);
-
 		ownerService.save(owner2);
 
-		Visit catVisit = new Visit();
-		catVisit.setPet(fionasCat);
-		catVisit.setDate(LocalDate.now());
-		catVisit.setDescription("Sneezy Kitty");
+		Visit catVisit = Visit.builder().pet(fionasCat).date(LocalDate.now()).description("Sneezy Kitty").build();
 
 		visitService.save(catVisit);
 
-		System.out.println("Loaded Owners....");
-
-		Vet vet1 = new Vet();
-		vet1.setFirstName("Sam");
-		vet1.setLastName("Axe");
+		Vet vet1 = Vet.builder().firstName("Sam").lastName("Axe").build();
 		vet1.getSpecialites().add(savedSpeciality1);
 
 		vetService.save(vet1);
 
-		Vet vet2 = new Vet();
-		vet2.setFirstName("Jessie");
-		vet2.setLastName("Porter");
+		Vet vet2 = Vet.builder().firstName("Jessie").lastName("Porter").build();
 		vet2.getSpecialites().add(savedSpeciality2);
 
 		vetService.save(vet2);
 
-		System.out.println("Loaded Vets....");
+		log.info("Data loaded successfully");
 	}
 
 }
