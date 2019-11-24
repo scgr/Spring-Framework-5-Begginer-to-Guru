@@ -17,10 +17,14 @@ public class RecipeServiceImpl implements RecipeService {
 	@Autowired
 	private RecipeRepository recipeRepository;
 
+	public RecipeServiceImpl(RecipeRepository recipeRepository) {
+		this.recipeRepository = recipeRepository;
+	}
+
 	@Override
 	public Set<Recipe> getRecipes() {
 		log.debug("It's being processing the getRecipes method on RecipeService");
-		
+
 		Set<Recipe> recipes = new HashSet<>();
 
 		recipeRepository.findAll().forEach(recipes::add);
