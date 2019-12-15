@@ -1,6 +1,7 @@
 package guru.springframework.services;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,17 @@ public class RecipeServiceImpl implements RecipeService {
 		recipeRepository.findAll().forEach(recipes::add);
 
 		return recipes;
+	}
+
+	@Override
+	public Recipe findById(Long id) {
+		Optional<Recipe> recipe = recipeRepository.findById(id);
+		
+		if(!recipe.isPresent()){
+			throw new RuntimeException("Recipe not found!!!");
+		}
+		
+		return recipe.get();
 	}
 
 }

@@ -2,12 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Recipe Home</title><link rel="stylesheet"
+<title>Recipe Home</title>
+
+<link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous"
 	th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
-	
+
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 
 <script
@@ -23,7 +25,7 @@
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header bg-primary text-light">
-						<h5 class="card-title">My Recipes!</h5>
+							<h5 class="card-title">My Recipes!</h5>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive"
@@ -33,11 +35,13 @@
 									<tr>
 										<th>ID</th>
 										<th>Description</th>
+										<th>View</th>
 									</tr>
 								</thead>
 								<tr th:each="recipe : ${recipes}">
 									<td th:text="${recipe.id}">1</td>
 									<td th:text="${recipe.description}">Description 1</td>
+									<td><a href="#" th:href="@{'/recipe/show/'+${recipe.id}}">View</a></td>
 								</tr>
 							</table>
 						</div>
